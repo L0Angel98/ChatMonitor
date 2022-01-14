@@ -5,8 +5,16 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
 const port = process.env.PORT || 3001;
-const http = require('http').Server(app);
-const io = require('socket.io')(http);
+let sio = require('socket.io');
+//const http = require('http').Server(app);
+//const io = require('socket.io')(http);
+const server = app.listen(port, () => {
+  const { port } = server.address();
+  console.log(`Listening on port ${port}`);
+ });
+ 
+let io = sio(server)
+
 const messages = [
   {name: "Yo",message:"Hello"},
   {name: "Pam",message:"hi"}
@@ -30,7 +38,4 @@ app.post('/message', (req, res) => {
   res.sendStatus(200);
 });
 
-const server = app.listen(port, () => {
- const { port } = server.address();
- console.log(`Listening on port ${port}`);
-});
+
