@@ -12,7 +12,6 @@ module.exports = {
       directory: path.join(__dirname, "public/")
     },
     port: 9000,
-    // publicPath
     // hotOnly
     hot: "only"
   },
