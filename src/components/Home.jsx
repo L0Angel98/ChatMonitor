@@ -1,5 +1,18 @@
 import React from "react";
+import axios from "axios";
+
+const testFetch = async () => {
+  try {
+    const resp = await axios.get("/api");
+    console.log(resp);
+  } catch (error) {
+    console.log(error)
+  }
+}
 
 export default function Home() {
-  return <div>Hola Mundo Vi</div>;
+  useEffect(() => {
+    testFetch();
+  }, [])
+  return <div>Hola Mundo</div>;
 }
