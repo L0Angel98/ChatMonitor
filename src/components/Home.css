@@ -55,10 +55,23 @@
 .messange{
   display: flex;
   flex-direction: column;
-  width: 200px;
+  width: 100%;
+  max-width: 200px;
   min-height: 150px;
-  justify-content: center;
+  justify-content: start;
   border: 1px solid aquamarine;
-  align-items: center;
+  align-items: flex-start;
   border-radius: 7px;
+  padding: 1em 1em;
+  box-sizing: border-box;
+}
+
+.messange > div {
+  display: flex;
+  flex-direction: column;
+  color: black;
+}
+
+.messange > div > label {
+  margin-left: 0.5em;
 }

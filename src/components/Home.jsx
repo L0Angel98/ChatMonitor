@@ -14,8 +14,17 @@ const testFetch = async () => {
 };
 
 export default function Home() {
-  const [resp, setResp] = useState([]);
+  const [respData, setRespData] = useState([]);
   const [dataSend, setDataSend] = useState({name: "", message: ""})
+
+  const handleFetchData = async () => {
+    try {
+      const resp = await axios.get("http://localhost:3001/messages")
+      setRespData([...resp.data])
+    } catch (error) {
+      
+    }
+  }
 
   const handleClick = async event => {
     event.preventDefault();
@@ -31,6 +40,7 @@ export default function Home() {
   };
 
   useEffect(() => {
+    handleFetchData();
     testFetch();
   }, []);
 
@@ -45,7 +55,7 @@ export default function Home() {
     });
     socket.on("message_12", (data) => {
       console.log("mensaje", data);
-      setResp([...data]);
+      setResp([...respData, ...data]);
     });
   }, []);
 
@@ -65,10 +75,11 @@ export default function Home() {
         <button type="submit" value="Submit" >Send Message</button>
       </form>
       <div className="messange">
-        {resp.length > 0 ? (
-          resp.map((item) => (
-            <div>
-              {item.name} <label>{item.messange}</label>
+        {respData.length > 0 ? (
+          respData.map((item) => (
+            <div key={item._id}>
+              {item.name} <label>{item.message}</label>
+              {console.log(item)}
             </div>
           ))
         ) : (
