@@ -12,10 +12,6 @@ module.exports = {
       directory: path.join(__dirname, "public/")
     },
     port: 9000,
-    // publicPath
-    devMiddleware: {
-      publicPath: "https://localhost:3000/dist/"
-    },
     // hotOnly
     hot: "only"
   },
