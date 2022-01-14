@@ -1,9 +1,12 @@
 const path = require("path");
 
 module.exports = {
-  entry: path.resolve(__dirname, "src", "index.jsx"),
+  entry: path.resolve(__dirname, "./src/index.jsx"),
+  resolve: {
+    extensions: ["*", ".js", "jsx"]
+  },
   output: {
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, "./public"),
     filename: "bundle.js"
   },
   devServer: {
@@ -11,13 +14,13 @@ module.exports = {
     static: {
       directory: path.join(__dirname, "public/")
     },
-    port: 9000,
+    port: 9000
     // publicPath
-    devMiddleware: {
-      publicPath: "https://localhost:3000/dist/"
-    },
+    // devMiddleware: {
+    //   publicPath: "https://localhost:3000/dist/"
+    // },
     // hotOnly
-    hot: "only"
+    // hot: "only"
   },
   module: {
     rules: [
