@@ -20,7 +20,7 @@ module.exports = {
     //   publicPath: "https://localhost:3000/dist/"
     // },
     // hotOnly
-    // hot: "only"
+    hot: "only"
   },
   module: {
     rules: [
