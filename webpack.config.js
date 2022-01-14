@@ -13,7 +13,13 @@ module.exports = {
     },
     port: 9000,
     // hotOnly
-    hot: "only"
+    hot: "only",
+    proxy: {
+      '/api': {
+          target: 'http://localhost:3001',
+          pathRewrite: { '^/api': '' },
+      },
+  }
   },
   module: {
     rules: [
