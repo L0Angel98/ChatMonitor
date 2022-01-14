@@ -1,5 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
+import socketIOClient from "socket.io-client";
+const ENDPOINT = "http://localhost:3001";
 
 const testFetch = async () => {
   try {
@@ -11,8 +13,16 @@ const testFetch = async () => {
 };
 
 export default function Home() {
+  const [resp, setResp] = useState("");
   useEffect(() => {
     testFetch();
+  }, []);
+
+  useEffect(() => {
+    const socket = socketIOClient(ENDPOINT);
+    socket.on("messages", data => {
+      setResp(data);
+    });
   }, []);
 
   return <div>Hola Mundo</div>;
