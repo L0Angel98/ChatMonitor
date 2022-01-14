@@ -4,7 +4,7 @@ import axios from "axios";
 const testFetch = async () => {
   try {
     const resp = await axios.get("/api");
-    console.log(resp);
+    console.log(resp.data.message);
   } catch (error) {
     console.log(error);
   }

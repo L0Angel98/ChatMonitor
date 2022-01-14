@@ -19,6 +19,10 @@ module.exports = {
           target: 'http://localhost:3001',
           pathRewrite: { '^/api': '' },
       },
+      '/message': {
+        target: 'http://localhost:3001',
+        pathRewrite: { '^/message': '' },
+    }
   }
   },
   module: {
