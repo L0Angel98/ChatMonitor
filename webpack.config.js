@@ -1,6 +1,7 @@
 const path = require("path");
 
 module.exports = {
+  mode: 'development',
   entry: path.resolve(__dirname, "src", "index.jsx"),
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -14,7 +15,7 @@ module.exports = {
     port: 9000,
     // publicPath
     devMiddleware: {
-      publicPath: "https://localhost:3000/dist/"
+      publicPath: "https://localhost:9000/dist/"
     },
     // hotOnly
     hot: "only"
