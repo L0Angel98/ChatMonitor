@@ -15,15 +15,15 @@ module.exports = {
     // hotOnly
     hot: "only",
     proxy: {
-      '/api': {
-          target: 'http://localhost:3001',
-          pathRewrite: { '^/api': '' },
+      "/api": {
+        target: "http://localhost:3001",
+        pathRewrite: { "^/api": "" }
       },
-      '/message': {
-        target: 'http://localhost:3001',
-        pathRewrite: { '^/message': '' },
+      "/messages": {
+        target: "http://localhost:3001",
+        pathRewrite: { "^/messages": "" }
+      }
     }
-  }
   },
   module: {
     rules: [
