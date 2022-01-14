@@ -1,7 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import Home from "./components/Home.jsx";
 
-ReactDOM.render(
-  React.createElement("div", null, `Getsemani`),
-  document.getElementById("app")
-);
+ReactDOM.render(<Home />, document.getElementById("app"));
