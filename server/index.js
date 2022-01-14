@@ -33,7 +33,9 @@ app.get("/messages", (req, res) => {
 
 app.post("/message", (req, res) => {
   messages.push(req.body);
-  io.emit("message", req.body);
+  const id = 12;
+  io.emit(`message_${id}`, req.body);
   console.log("Connected clients");
+  console.log(req.body);
   res.sendStatus(200);
 });

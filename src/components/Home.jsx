@@ -18,10 +18,10 @@ export default function Home() {
   const handleClick = async () => {
     try {
       const resp = await axios.post("http://localhost:3001/message", {
-        body: "Hola mundo",
+        message: "Hola mundo",
         name: "getsemani"
       });
-      console.log(resp);
+      // console.log(resp);
     } catch (error) {}
   };
 
@@ -30,16 +30,18 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    const socket = socketIOClient(ENDPOINT);
-    socket.on("messages", data => {
-      console.log(data);
+    const socket = socketIOClient(ENDPOINT, {
+      withCredentials: true
+    });
+    socket.on("message_12", data => {
+      console.log("mensaje", data);
       setResp(data);
     });
   }, []);
 
   return (
     <div>
-      <button onClick={handleClick}>Send Message</button>Respuesta: {resp}
+      <button onClick={handleClick}>Send Message</button>Respuesta: {resp.name}
     </div>
   );
 }
