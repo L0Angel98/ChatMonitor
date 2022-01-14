@@ -21,9 +21,10 @@ export default function Home() {
   useEffect(() => {
     const socket = socketIOClient(ENDPOINT);
     socket.on("messages", data => {
+      console.log(data);
       setResp(data);
     });
   }, []);
 
-  return <div>Hola Mundo</div>;
+  return <div>Respuesta: {resp}</div>;
 }
