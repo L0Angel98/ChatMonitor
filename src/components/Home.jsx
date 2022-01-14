@@ -14,6 +14,17 @@ const testFetch = async () => {
 
 export default function Home() {
   const [resp, setResp] = useState("");
+
+  const handleClick = async () => {
+    try {
+      const resp = await axios.post("http://localhost:3001/message", {
+        body: "Hola mundo",
+        name: "getsemani"
+      });
+      console.log(resp);
+    } catch (error) {}
+  };
+
   useEffect(() => {
     testFetch();
   }, []);
@@ -26,5 +37,9 @@ export default function Home() {
     });
   }, []);
 
-  return <div>Respuesta: {resp}</div>;
+  return (
+    <div>
+      <button onClick={handleClick}>Send Message</button>Respuesta: {resp}
+    </div>
+  );
 }
