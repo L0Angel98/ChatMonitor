@@ -13,9 +13,6 @@ module.exports = {
     },
     port: 9000,
     // publicPath
-    devMiddleware: {
-      publicPath: "https://localhost:3000/dist/"
-    },
     // hotOnly
     hot: "only"
   },
